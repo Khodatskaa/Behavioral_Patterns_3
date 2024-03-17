@@ -2,15 +2,23 @@
 
 namespace Behavioral_Patterns_3
 {
-    internal class Program
+    public class Program
     {
         static void Main()
         {
-            Console.WriteLine("Health Monitoring System:");
+            Console.WriteLine("Simple Health Monitoring System:");
+            SimpleSystem simpleSystem = new SimpleSystem();
+            simpleSystem.MonitorHealth();
 
-            IHealthMonitoringSystem healthMonitoringSystem = new HealthMonitoringSystem();
+            Console.WriteLine("\nAdvanced Health Monitoring System:");
 
-            healthMonitoringSystem.MonitorHealth();
+            AdvancedSystem advancedSystem = new AdvancedSystem();
+
+            advancedSystem.SetThreshold("Vitals", 130);
+            advancedSystem.SetThreshold("Temperature", 38.0);
+
+            advancedSystem.MonitorHealth();
         }
     }
+
 }

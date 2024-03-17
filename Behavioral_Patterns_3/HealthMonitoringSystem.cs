@@ -6,19 +6,8 @@ using System.Threading.Tasks;
 
 namespace Behavioral_Patterns_3
 {
-    public class HealthMonitoringSystem : IHealthMonitoringSystem
+    public abstract class HealthMonitoringSystem : IHealthMonitoringSystem
     {
-        private Dictionary<string, double> thresholds = new Dictionary<string, double>();
-
-        public HealthMonitoringSystem()
-        {
-            thresholds.Add("Vitals", 120);
-            thresholds.Add("Temperature", 37.5);
-            thresholds.Add("HeartRate", 100);
-            thresholds.Add("BloodPressure", 120);
-            thresholds.Add("OxygenLevel", 95);
-        }
-
         public void MonitorHealth()
         {
             CheckVitals();
@@ -29,34 +18,16 @@ namespace Behavioral_Patterns_3
             NotifyUser();
         }
 
-        private void CheckVitals()
-        {
-            Console.WriteLine("Checking Vitals...");
-        }
+        protected abstract void CheckVitals();
+        protected abstract void CheckBloodPressure();
+        protected abstract void CheckTemperature();
+        protected abstract void CheckHeartRate();
+        protected abstract void CheckOxygenLevel();
 
-        private void CheckBloodPressure()
+        protected virtual void NotifyUser()
         {
-            Console.WriteLine("Checking Blood Pressure...");
-        }
-
-        private void CheckTemperature()
-        {
-            Console.WriteLine("Checking Temperature...");
-        }
-
-        private void CheckHeartRate()
-        {
-            Console.WriteLine("Checking Heart Rate...");
-        }
-
-        private void CheckOxygenLevel()
-        {
-            Console.WriteLine("Checking Oxygen Level...");
-        }
-
-        private void NotifyUser()
-        {
-            Console.WriteLine("Notifying User...");
+            Console.WriteLine("Health check complete. No issues found.");
         }
     }
 }
+
