@@ -2,9 +2,21 @@
 {
     internal class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            Console.WriteLine();
+            List<IRobot> robots = new List<IRobot>
+            {
+                new RobotArm(),
+                new RobotLeg(),
+                new RobotHead()
+            };
+
+            IRobotVisitor visitor = new RobotControlVisitor();
+
+            foreach (var robot in robots)
+            {
+                robot.Accept(visitor);
+            }
         }
     }
 }
