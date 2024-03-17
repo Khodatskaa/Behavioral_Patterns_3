@@ -4,7 +4,8 @@
     {
         static void Main()
         {
-            Console.WriteLine();
+            var client = new Client();
+            client.BookTravel();
         }
     }
 }
