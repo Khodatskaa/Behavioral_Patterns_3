@@ -4,7 +4,15 @@
     {
         static void Main()
         {
-            Console.WriteLine();
+            var beveragePreparationVisitor = new BeveragePreparationVisitor();
+
+            var coffee = new Coffee();
+            coffee.Accept(beveragePreparationVisitor);
+
+            var tea = new Tea();
+            tea.Accept(beveragePreparationVisitor);
+
+            Console.ReadLine();
         }
     }
 }
